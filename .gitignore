@@ -1,0 +1,6 @@
+data/
+webdata/
+pgadmin/
+__pycache__/
+*.pyc
+*.log
