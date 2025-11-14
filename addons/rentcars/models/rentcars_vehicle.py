@@ -7,3 +7,5 @@ class RentcarsVehicle(models.Model):
     date_purchased = fields.Date(string="Purchase Date")
     model = fields.Char("Model")
     thumbnail = fields.Binary("Thumbnail")
+    def button_check_immatriculation(self):
+        return True
