@@ -25,7 +25,10 @@ Long description of module's purpose
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/rentcars_menu.xml',
+        'views/vehicles_views.xml',
         'security/rentcars_security.xml',
+        'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode
     'demo': [
