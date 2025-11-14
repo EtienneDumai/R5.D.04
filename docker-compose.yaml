@@ -14,7 +14,7 @@ services:
       - HOST=db
       - USER=odoo
       - PASSWORD=myodoo
-    command: odoo -d odoo18 -i rentcars && odoo -d odoo18 -u all
+    command: odoo -d odoo18 -i rentcars,sale_management,stock,website
 
   db:
     user: root

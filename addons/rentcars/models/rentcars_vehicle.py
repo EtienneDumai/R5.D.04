@@ -1,4 +1,4 @@
-from odoo import fiels, models
+from odoo import fields, models
 class RentcarsVehicle(models.Model):
     _name = 'rentcars.vehicle'
     _description='Description of vehicle'
