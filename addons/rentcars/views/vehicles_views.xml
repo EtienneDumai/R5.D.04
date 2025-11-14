@@ -17,4 +17,29 @@
             </form>
         </field>
     </record>
+    <record id="view_list_vehicle" model="ir.ui.view">
+        <field name="name">Vehicle List</field>
+        <field name="model">rentcars.vehicle</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="model"/>
+                <field name="immatriculation"/>
+                <field name="date_purchased"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_search_vehicle" model="ir.ui.view">
+        <field name="name">Vehicle Filter</field>
+        <field name="model">rentcars.vehicle</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="immatriculation"/>
+                <field name="model"/>
+                <filter name="filter_inactive" string="Inactive" domain="[('active','=',False)]"/>
+                <filter name="filter_active" string="Active" domain="[('active','=',True)]"/>
+            </search>
+        </field>
+    </record>
+
 </odoo>
