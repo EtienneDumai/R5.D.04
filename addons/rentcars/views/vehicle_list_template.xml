@@ -1,0 +1,24 @@
+<odoo>
+ <template id="vehicle_list_template" name="Vehicle List">
+  <t t-call="website.layout">
+    <div class="oe_structure"/>
+        <div id="wrap" class="container">
+          <h1>Vehicles</h1>
+          <div class="row">
+             <t t-foreach="vehicles" t-as="vehicle">
+               <h1 t-field="vehicle.model"></h1>
+               <p>Immatriculation:<span t-field="vehicle.immatriculation"></span>
+               </p>
+               <p>Date d'achat:<span t-field="vehicle.date_purchased"></span>
+               </p>
+               <p>
+                  <img t-attf-src="data:image/jpg;base64,{{ vehicle.thumbnail }}"  
+                       height="120" width="120"
+                       style='margin:0px;padding-top:0px;'/>
+               </p>
+             </t>
+          </div>
+     </div>
+  </t>
+ </template>
+</odoo>

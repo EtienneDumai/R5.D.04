@@ -27,7 +27,7 @@ Long description of module's purpose
         'views/templates.xml',
         'views/rentcars_menu.xml',
         'views/vehicle_views.xml',
-        'views/vehicle_list_templates.xml',
+        'views/vehicle_list_template.xml',
         'security/rentcars_security.xml',
         'security/ir.model.access.csv',
     ],
