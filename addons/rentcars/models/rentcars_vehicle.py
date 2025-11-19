@@ -9,6 +9,15 @@ class RentcarsVehicle(models.Model):
     date_purchased = fields.Date(string="Purchase Date")
     model = fields.Char("Model")
     thumbnail = fields.Binary("Thumbnail")
+    garage_id = fields.Many2one('rentcars.garage', string="garage")
+    option_ids = fields.Many2many(
+    "rentcars.option",
+    string="Option of vehicle"
+    )
+    category_ids = fields.Many2many(
+    "rentcars.category",
+    string="Category of vehicle"
+    )
     def _check_immatriculation(self) :
         self.ensure_one() #vérifie que quel self contient 1 seul record.
         pattern = re.compile("^\w{2}[0-9]{3}\w{2}$")

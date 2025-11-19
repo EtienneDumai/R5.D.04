@@ -13,6 +13,15 @@
                     <field name="active"/>
                     <field name="date_purchased"/>
                     <field name="immatriculation"/>
+                    <field name="garage_id"/>
+                    <field name="vehicle_ids" widget="many2many">
+                        <list editable="bottom">
+                            <field name="model"/>
+                            <field name="immatriculation" />
+                            <field name="date_purchased" />
+                            <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
+                        </list>
+                    </field>
                 </group>
             </form>
         </field>
@@ -41,5 +50,4 @@
             </search>
         </field>
     </record>
-
 </odoo>
