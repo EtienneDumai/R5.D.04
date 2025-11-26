@@ -14,14 +14,14 @@
                     <field name="date_purchased"/>
                     <field name="num_inv"/>
                     <field name="quiver_id"/>
-                    <field name="board_ids" widget="many2many">
+                    <!-- <field name="board_ids" widget="many2many">
                         <list editable="bottom">
                             <field name="model"/>
                             <field name="num_inv" />
                             <field name="date_purchased" />
                             <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
                         </list>
-                    </field>
+                    </field> -->
                 </group>
             </form>
         </field>

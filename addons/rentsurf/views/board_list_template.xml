@@ -7,7 +7,7 @@
           <div class="row">
              <t t-foreach="boards" t-as="board">
                <h1 t-field="board.model"></h1>
-               <p>Immatriculation:<span t-field="board.immatriculation"></span>
+               <p>Numero d'inventaire:<span t-field="board.num_inv"></span>
                </p>
                <p>Date d'achat:<span t-field="board.date_purchased"></span>
                </p>

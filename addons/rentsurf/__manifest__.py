@@ -23,12 +23,13 @@ Long description of module's purpose
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
         'views/board_list_template.xml',
         'views/board_views.xml',
         'views/rentsurf_menu.xml',
-        'views/views.xml',
         'views/templates.xml',
+        'views/views.xml',
+        'security/rentsurf_security.xml',
+        'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode
     'demo': [
