@@ -1,2 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_rentsurf_rentsurf,rentsurf.rentsurf,model_rentsurf_rentsurf,base.group_user,1,1,1,1
+access_rentsurf_board_user,access_rentsurf_board_user,model_rentsurf_board,rentsurf.rentsurf_group_user,1,0,0,0
+access_rentsurf_board_manager,access_rentsurf_board_manager,model_rentsurf_board,rentsurf.rentsurf_group_manager,1,1,1,1
+access_rentsurf_quiver_manager,QuiverManager,model_rentsurf_quiver,rentsurf.rentsurf_group_manager,1,1,1,1
+access_rentsurf_quiver_user,QuiverUser,model_rentsurf_quiver,rentsurf.rentsurf_group_user,1,0,0,0
+access_rentsurf_option_manager,OptionManager,model_rentsurf_option,rentsurf.rentsurf_group_manager,1,1,1,1
+access_rentsurf_option_user,OptionUser,model_rentsurf_option,rentsurf.rentsurf_group_user,1,0,0,0
+access_rentsurf_category_manager,CategoryManager,model_rentsurf_category,rentsurf.rentsurf_group_manager,1,1,1,1
+access_rentsurf_category_user,CategoryUser,model_rentsurf_category,rentsurf.rentsurf_group_user,1,0,0,0
