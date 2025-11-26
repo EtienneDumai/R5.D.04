@@ -13,6 +13,7 @@
                     <field name="active"/>
                     <field name="date_purchased"/>
                     <field name="immatriculation"/>
+                    <field name="option_ids" widget="many2many_tags" />
                     <field name="garage_id"/>
                     <!-- <field name="vehicle_ids" widget="many2many">
                         <list editable="bottom">
