@@ -36,6 +36,7 @@
                 <field name="immatriculation"/>
                 <field name="date_purchased"/>
                 <field name="active"/>
+                <field name="age_vehicle"/>
             </list>
         </field>
     </record>

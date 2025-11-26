@@ -1,6 +1,8 @@
-from odoo import fields, models
+from odoo import fields, models, api
 import re
 from odoo.exceptions import ValidationError
+from datetime import date
+from dateutil.relativedelta import relativedelta
 class RentcarsVehicle(models.Model):
     _name = 'rentcars.vehicle'
     _description='Description of vehicle'
@@ -9,6 +11,7 @@ class RentcarsVehicle(models.Model):
     date_purchased = fields.Date(string="Purchase Date")
     model = fields.Char("Model")
     thumbnail = fields.Binary("Thumbnail")
+    age_vehicle=fields.Integer(compute="_age_vehicle", string="Age of vehicle (years)")
     garage_id = fields.Many2one('rentcars.garage', string="garage")
     option_ids = fields.Many2many(
     "rentcars.option",
@@ -18,6 +21,11 @@ class RentcarsVehicle(models.Model):
     "rentcars.category",
     string="Category of vehicle"
     )
+    @api.depends('date_purchased')
+    def _age_vehicle(self):
+        for vehicle in self:
+            TODAY = date.today()
+            vehicle.age_vehicle=relativedelta(TODAY,vehicle.date_purchased).years
     def _check_immatriculation(self) :
         self.ensure_one() #vérifie que quel self contient 1 seul record.
         pattern = re.compile("^\w{2}[0-9]{3}\w{2}$")
