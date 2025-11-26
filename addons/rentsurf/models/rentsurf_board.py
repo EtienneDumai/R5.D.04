@@ -9,7 +9,7 @@ class RentSurfBoard(models.Model):
     date_purchased = fields.Date(string="Purchase Date")
     model = fields.Char("Model")
     thumbnail = fields.Binary("Thumbnail")
-    garage_id = fields.Many2one('rentsurf.quiver', string="quiver")
+    quiver_id = fields.Many2one('rentsurf.quiver', string="quiver")
     option_ids = fields.Many2many(
     "rentsurf.option",
     string="Option of board"
