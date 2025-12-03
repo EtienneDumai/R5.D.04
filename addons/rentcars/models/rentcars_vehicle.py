@@ -22,6 +22,17 @@ class RentcarsVehicle(models.Model):
     string="Category of vehicle"
     )
     garage_city = fields.Char(related='garage_id.address_city', string="Garage City")
+    state=fields.Selection([
+    ('broken', 'Broken Down'),
+    ('repaired', 'Being repaired'),
+    ('usable', 'Usabled')])
+    repairing_status=fields.Selection([
+    ('arrived', 'Just arrived'),
+    ('diagnoses','Diagnosing'),
+    ('waiting', 'Waiting for parts'),
+    ('repairing', 'Repairing'),
+    ('finish', 'Finish')
+    ], string="Repairing status", default='arrived')
     @api.depends('date_purchased')
     def _age_vehicle(self):
         for vehicle in self:

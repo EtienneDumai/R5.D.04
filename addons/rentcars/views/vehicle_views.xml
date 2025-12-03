@@ -12,9 +12,16 @@
                     <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
                     <field name="active"/>
                     <field name="date_purchased"/>
-                    <field name="immatriculation"/>
-                    <field name="option_ids" widget="many2many_tags" />
+                    <field name="immatriculation" />
+                    <field name="age_vehicle"/>
+                    <field name="option_ids" 
+                        widget="many2many_checkboxes"
+                        readonly="['|',
+                        ('age_vehicle', '>=', '3'),
+                        ('state', '!=', 'usable')]"/>
                     <field name="garage_id"/>
+                    <field name="state" />
+                    <field name="repairing_status" states='repaired'/>
                 </group>
             </form>
         </field>
@@ -23,14 +30,16 @@
         <field name="name">Vehicle List</field>
         <field name="model">rentcars.vehicle</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="model"/>
-                <field name="immatriculation"/>
-                <field name="date_purchased"/>
-                <field name="active"/>
-                <field name="age_vehicle"/>
-                <field name="garage_city"/>
-            </list>
+                <list decoration-success="state=='usable'" editable="1" create="false">
+                    <field name="model"/>
+                    <field name="immatriculation"/>
+                    <field name="state"/>
+                    <field name="date_purchased"/>
+                    <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
+                    <field name="garage_city"/>
+                    <field name="age_vehicle"/>
+                    <field name="age_vehicle" avg="Mon étiquette" />
+                </list>
         </field>
     </record>
     <record id="view_search_vehicle" model="ir.ui.view">
