@@ -21,6 +21,7 @@ class RentcarsVehicle(models.Model):
     "rentcars.category",
     string="Category of vehicle"
     )
+    garage_city = fields.Char(related='garage_id.address_city', string="Garage City")
     @api.depends('date_purchased')
     def _age_vehicle(self):
         for vehicle in self:
