@@ -34,6 +34,8 @@ Long description of module's purpose
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
+        'demo/rentcars.vehicle.csv',
+        'demo/rentcars.garage.csv',
     ],
 }
 
