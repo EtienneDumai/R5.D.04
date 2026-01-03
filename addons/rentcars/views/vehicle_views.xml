@@ -21,7 +21,7 @@
                         ('state', '!=', 'usable')]"/>
                     <field name="garage_id"/>
                     <field name="state" />
-                    <field name="repairing_status" states='repaired'/>
+                    <field name="repairing_status"/>
                 </group>
             </form>
         </field>
@@ -30,7 +30,7 @@
         <field name="name">Vehicle List</field>
         <field name="model">rentcars.vehicle</field>
         <field name="arch" type="xml">
-                <list decoration-success="state=='usable'" editable="1" create="false">
+                <list decoration-success="state=='usable'" editable="bottom" create="false">
                     <field name="model"/>
                     <field name="immatriculation"/>
                     <field name="state"/>
