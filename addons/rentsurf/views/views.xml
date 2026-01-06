@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+
     <record model="ir.ui.view" id="rentsurf.list">
       <field name="name">rentsurf list</field>
       <field name="model">rentsurf.rentsurf</field>
@@ -13,19 +13,19 @@
         </list>
       </field>
     </record>
--->
+
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="rentsurf.action_window">
       <field name="name">rentsurf window</field>
       <field name="res_model">rentsurf.rentsurf</field>
       <field name="view_mode">list,form</field>
     </record>
--->
+
 
     <!-- server action to the one above -->
-<!--
+
     <record model="ir.actions.server" id="rentsurf.action_server">
       <field name="name">rentsurf server</field>
       <field name="model_id" ref="model_rentsurf_rentsurf"/>
@@ -38,23 +38,23 @@
         }
       </field>
     </record>
--->
+
 
     <!-- Top menu item -->
-<!--
+
     <menuitem name="rentsurf" id="rentsurf.menu_root"/>
--->
+
     <!-- menu categories -->
-<!--
+
     <menuitem name="Menu 1" id="rentsurf.menu_1" parent="rentsurf.menu_root"/>
     <menuitem name="Menu 2" id="rentsurf.menu_2" parent="rentsurf.menu_root"/>
--->
+
     <!-- actions -->
-<!--
+
     <menuitem name="List" id="rentsurf.menu_1_list" parent="rentsurf.menu_1"
               action="rentsurf.action_window"/>
     <menuitem name="Server to list" id="rentsurf" parent="rentsurf.menu_2"
               action="rentsurf.action_server"/>
--->
+
   </data>
 </odoo>

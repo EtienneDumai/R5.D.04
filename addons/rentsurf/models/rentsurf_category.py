@@ -22,6 +22,6 @@ class Category(models.Model):
 
     # Optionnel, mais utile:
     child_ids = fields.One2many(
-        "rentcars.category",
+        "rentsurf.category",
         "parent_id",
         "Subcategories")
