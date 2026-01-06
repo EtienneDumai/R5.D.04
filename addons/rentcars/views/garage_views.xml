@@ -1,16 +1,15 @@
-<record id="view_form_vehicle" model="ir.ui.view">
+<odoo>
+    <record id="view_form_vehicle" model="ir.ui.view">
         <field name="name">Garage Form</field>
         <field name="model">rentcars.garage</field>
         <field name="arch" type="xml">
             <form string="garage">
                 <group>
-                    <field name="model"/>
                     <field name="active"/>
-                    <field name="adress_street"/>
-                    <field name="adress_zipcode"/>
-                    <field name="option_ids" widget="many2many_tags" />
-                    <field name="adress_city"/>
-                    <field name="place_max"/>
+                    <field name="address_street"/>
+                    <field name="address_zipcode"/>
+                    <field name="address_city"/>
+                    <field name="places_max"/>
                     <field name="vehicle_ids" widget="many2many">
                         <list editable="bottom">
                             <field name="model"/>
@@ -23,3 +22,4 @@
             </form>
         </field>
     </record>
+</odoo>
