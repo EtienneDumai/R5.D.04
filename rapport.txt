@@ -1,0 +1,28 @@
+Groupe de sécurité
+
+    Il y a aux moins deux groupes de sécurité
+    Des droits d'accès différents aux modèles ont été accordés aux groupes de sécurité
+
+Modèles
+
+    Il y a plusieurs modèles.
+    Il y a dans au moins un modèle un champ textuel, un champ numérique, un champ date un champ image, un champ select. et un champ calculé et un champ related.
+    Il y a au moins dans un modèle un méthode qui contrôle des données.
+    Il existe au moins une relation un à plusieurs et une relation plusieurs à plusieurs.
+    Il existe des données de démo au format xml. Certains enregistrements sont liés par les relations d'autres non.
+    Un des modèle étend un modèle d'odoo.
+
+Vues
+
+    Il existe une vue liste personnalisée.
+    Il existe une vue formulaire personnalisée.
+    Il existe un champ recherche personnalisé.
+    Il existe une vue calendrier ou une vue kanban.
+    Une page web est disponible.
+    Dans une des vues on trouve au moins un exemplaire de tous les champs exigés dans les consignes sur les modèles.
+    Un bouton permet d'exécuter la méthode qui contrôle les données
+    L'héritage du modèle étendu est utilisé dans une vue (affichage d'un champ parent ou modification d'une des vues du modèle parent)
+    Un ou plusieurs champs ne sont visibles que pour un groupe d'utilisateur ou en fonction de la valeur d'un autre champ.
+
+En plus de tous les fichiers nécessaires au bon fonctionnement de votre projet, vous devrez rendre aussi un rapport dans lequel vous indiquez, pour chaque critère, les pages (url) et les fichiers qui permettent de vérifier qu'un critère a été respecté.
+
