@@ -17,6 +17,7 @@ Module de location de planches de surf :
         'base',
         'website',
     ],
+    'images': ['static/description/icon.png'],
     'application': True,
 
     'data': [
