@@ -1,6 +1,6 @@
 <odoo>
     <record id="view_kanban_board" model="ir.ui.view">
-        <field name="name">Board Kanban</field>
+        <field name="name">Kanban Planche de surf</field>
         <field name="model">rentsurf.board</field>
         <field name="arch" type="xml">
             <kanban>
@@ -19,8 +19,8 @@
                             </div>
                             <div class="o_kanban_secondary">
                                 <div>Condition: <field name="condition"/></div>
-                                <div>City: <field name="quiver_city"/></div>
-                                <div>Age (days): <field name="age_days"/></div>
+                                <div>Ville: <field name="quiver_city"/></div>
+                                <div>Âge (jours): <field name="age_days"/></div>
                             </div>
                         </div>
                     </t>

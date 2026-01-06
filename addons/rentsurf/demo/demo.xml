@@ -39,13 +39,13 @@
         <record id="demo_cat_shortboard" model="rentsurf.category">
             <field name="name">Shortboard</field>
             <field name="active">True</field>
-            <field name="description">Short boards</field>
+            <field name="description">Short boards (planches courtes pour niveau intermédiaire à avancé)</field>
         </record>
 
         <record id="demo_cat_beginner" model="rentsurf.category">
-            <field name="name">Beginner</field>
+            <field name="name">Debutant</field>
             <field name="active">True</field>
-            <field name="description">Easy boards</field>
+            <field name="description">Planches pour les debutants</field>
         </record>
 
         <!-- Boards (liés) -->
@@ -53,9 +53,9 @@
             <field name="active">True</field>
             <field name="num_inv">SURF-2025-0001</field>
             <field name="model">Torq 7.2</field>
-            <field name="notes">Demo board linked to quiver/options/categories</field>
+            <field name="notes">Planche de demo liée à quiver/options/categories</field>
             <field name="length_cm">218</field>
-            <field name="condition">good</field>
+            <field name="condition">bon</field>
             <field name="date_purchased">2024-06-15</field>
 
             <field name="quiver_id" ref="demo_quiver_anglet"/>
@@ -68,9 +68,9 @@
             <field name="active">True</field>
             <field name="num_inv">SURF-2025-0002</field>
             <field name="model">Minimal 8.0</field>
-            <field name="notes">Demo board with only quiver</field>
+            <field name="notes">Planche de demo liée uniquement à 1 quiver</field>
             <field name="length_cm">244</field>
-            <field name="condition">used</field>
+            <field name="condition">utilisé</field>
             <field name="date_purchased">2023-05-10</field>
 
             <field name="quiver_id" ref="demo_quiver_biarritz"/>
@@ -78,9 +78,9 @@
 
         <!-- Exemple de contact (modèle étendu) -->
         <record id="demo_partner_customer" model="res.partner">
-            <field name="name">Demo RentSurf Customer</field>
+            <field name="name">Client Demo RentSurf</field>
             <field name="rentsurf_is_customer">True</field>
-            <field name="rentsurf_level">beginner</field>
+            <field name="rentsurf_level">debutant</field>
             <field name="rentsurf_preferred_quiver_id" ref="demo_quiver_anglet"/>
         </record>
 

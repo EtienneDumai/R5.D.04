@@ -87,7 +87,7 @@
                 <field name="quiver_id"/>
                 <filter name="filter_inactive" string="Inactive" domain="[('active','=',False)]"/>
                 <filter name="filter_active" string="Active" domain="[('active','=',True)]"/>
-                <filter name="filter_damaged" string="Damaged" domain="[('condition','=','damaged')]"/>
+                <filter name="filter_damaged" string="Endommagée" domain="[('condition','=','damaged')]"/>
             </search>
         </field>
     </record>

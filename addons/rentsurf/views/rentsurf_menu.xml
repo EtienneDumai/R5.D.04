@@ -29,7 +29,7 @@
     </record>
     <!-- Liens de menu -->
     <menuitem id="menu_rentsurf_board" name="Boards" parent="menu_rentsurf" action="action_rentsurf_board" sequence="0"  />
-    <menuitem id="menu_rentsurf_quiver" name="Quiver" parent="menu_rentsurf" action="action_rentsurf_quiver" sequence="10" />
+    <menuitem id="menu_rentsurf_quiver" name="Quivers" parent="menu_rentsurf" action="action_rentsurf_quiver" sequence="10" />
     <menuitem id="menu_rentsurf_option" name="Options" parent="menu_rentsurf" action="action_rentsurf_option" sequence="20" />
-    <menuitem id="menu_rentsurf_category" name="Categorys" parent="menu_rentsurf" action="action_rentsurf_category" sequence="30" />
+    <menuitem id="menu_rentsurf_category" name="Categories" parent="menu_rentsurf" action="action_rentsurf_category" sequence="30" />
 </odoo>

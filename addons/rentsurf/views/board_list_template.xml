@@ -3,7 +3,7 @@
   <t t-call="website.layout">
     <div class="oe_structure"/>
         <div id="wrap" class="container">
-          <h1>Boards</h1>
+          <h1>Planches</h1>
           <div class="row">
              <t t-foreach="boards" t-as="board">
                <h1 t-field="board.model"></h1>

@@ -3,20 +3,20 @@ from odoo import models, fields, api
 
 class Category(models.Model):
     _name = 'rentsurf.category'
-    _description = 'Category of board'
+    _description = 'Catégorie de planche de surf'
     _parent_store = True
 
     active=fields.Boolean("Actif ?", default=True)
-    name = fields.Char("Name")
+    name = fields.Char("Nom")
     description= fields.Char("Description")
 
     vehicle_ids = fields.Many2many(
         "rentsurf.board",
-        string="Board With option"
+        string="Planche avec option"
     )
     parent_id = fields.Many2one(
         "rentsurf.category",
-        "Parent Category",
+        "Catégorie parente",
         ondelete="restrict")
     parent_path = fields.Char(index=True)
 
@@ -24,4 +24,4 @@ class Category(models.Model):
     child_ids = fields.One2many(
         "rentsurf.category",
         "parent_id",
-        "Subcategories")
+        "Sous-catégories")

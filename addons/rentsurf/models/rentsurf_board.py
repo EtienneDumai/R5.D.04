@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 
 class RentSurfBoard(models.Model):
     _name = 'rentsurf.board'
-    _description = 'Description of board'
+    _description = 'Description de la planche de surf'
 
     active = fields.Boolean("Actif ?", default=True)
 
@@ -15,10 +15,10 @@ class RentSurfBoard(models.Model):
     notes = fields.Text("Notes")
 
     # Champs numériques
-    length_cm = fields.Float("Length (cm)")
+    length_cm = fields.Float("Longueur (cm)")
 
     # Date
-    date_purchased = fields.Date(string="Purchase Date")
+    date_purchased = fields.Date(string="Date d'achat")
 
     # Image
     thumbnail = fields.Binary("Thumbnail")
@@ -26,13 +26,13 @@ class RentSurfBoard(models.Model):
     # Select
     condition = fields.Selection(
         [
-            ("new", "New"),
-            ("good", "Good"),
-            ("used", "Used"),
-            ("damaged", "Damaged"),
+            ("neuf", "Neuf"),
+            ("bon", "Bon"),
+            ("utilisé", "Utilisé"),
+            ("endommagé", "Endommagé"),
         ],
         string="Condition",
-        default="good",
+        default="bon",
         required=True,
     )
 
@@ -43,7 +43,7 @@ class RentSurfBoard(models.Model):
 
     # Related (exigé)
     quiver_city = fields.Char(
-        string="Quiver City",
+        string="Ville du quiver",
         related="quiver_id.address_city",
         store=True,
         readonly=True,
@@ -51,15 +51,15 @@ class RentSurfBoard(models.Model):
 
     # Calculé (exigé)
     age_days = fields.Integer(
-        string="Age (days)",
+        string="Âge (jours)",
         compute="_compute_age_days",
         store=True,
         readonly=True,
     )
 
     # Champs utilisés pour la visibilité conditionnelle dans la vue
-    damage_report = fields.Text("Damage report")
-    manager_internal_notes = fields.Text("Internal notes (manager)")
+    damage_report = fields.Text("Rapport de dommages")
+    manager_internal_notes = fields.Text("Notes internes (gestionnaire)")
 
     @api.depends("date_purchased")
     def _compute_age_days(self):
@@ -78,7 +78,7 @@ class RentSurfBoard(models.Model):
     def button_check_num_inv(self):
         for board in self:
             if not board.num_inv:
-                raise ValidationError("Please provide a Numero d'inventaire for this board")
+                raise ValidationError("Veuillez fournir un Numéro d'inventaire pour cette planche")
             if board.num_inv and not board._check_num_inv():
-                raise ValidationError("%s Numero d'inventaire is invalid" % (board.num_inv))
+                raise ValidationError("%s Numéro d'inventaire invalide" % (board.num_inv))
         return True

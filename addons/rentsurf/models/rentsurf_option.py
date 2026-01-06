@@ -3,12 +3,12 @@ from odoo import models, fields, api
 
 class Option(models.Model):
     _name = 'rentsurf.option'
-    _description = 'Options of board'
+    _description = 'Option de planche de surf'
     active=fields.Boolean("Actif ?", default=True)
-    name = fields.Char("Name")
-    category = fields.Selection([("security", "security"), ("comfort", "comfort"), ("aestheticism", "aestheticism")])
+    name = fields.Char("Nom")
+    category = fields.Selection([("security", "Sécurité"), ("comfort", "Confort"), ("aestheticism", "Esthétique")])
     description= fields.Char("Description")
     board_ids = fields.Many2many(
     "rentsurf.board",
-    string="Board With option"
+    string="Planche avec option"
     )
