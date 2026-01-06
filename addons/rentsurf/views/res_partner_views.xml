@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_partner_form_rentsurf_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.rentsurf.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="RentSurf">
+                    <group>
+                        <field name="rentsurf_is_customer"/>
+                        <field name="rentsurf_level" invisible="rentsurf_is_customer == False"/>
+                        <field name="rentsurf_preferred_quiver_id" invisible="rentsurf_is_customer == False"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

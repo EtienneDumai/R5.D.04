@@ -1,0 +1,31 @@
+<odoo>
+    <record id="view_kanban_board" model="ir.ui.view">
+        <field name="name">Board Kanban</field>
+        <field name="model">rentsurf.board</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="model"/>
+                <field name="num_inv"/>
+                <field name="condition"/>
+                <field name="quiver_city"/>
+                <field name="age_days"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record oe_kanban_global_click">
+                            <div class="o_kanban_primary">
+                                <strong><field name="model"/></strong>
+                                <div><field name="num_inv"/></div>
+                            </div>
+                            <div class="o_kanban_secondary">
+                                <div>Condition: <field name="condition"/></div>
+                                <div>City: <field name="quiver_city"/></div>
+                                <div>Age (days): <field name="age_days"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
