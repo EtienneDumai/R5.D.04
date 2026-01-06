@@ -1,30 +1,88 @@
 <odoo>
-    <data>
-<!--
-          <record id="object0" model="rentsurf.rentsurf">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
+    <data noupdate="1">
 
-          <record id="object1" model="rentsurf.rentsurf">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+        <!-- Quivers -->
+        <record id="demo_quiver_anglet" model="rentsurf.quiver">
+            <field name="name">Anglet Quiver</field>
+            <field name="active">True</field>
+            <field name="address_street">10 allée du parc Montaury</field>
+            <field name="address_zipcode">64600</field>
+            <field name="address_city">Anglet</field>
+            <field name="places_max">10</field>
+        </record>
 
-          <record id="object2" model="rentsurf.rentsurf">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+        <record id="demo_quiver_biarritz" model="rentsurf.quiver">
+            <field name="name">Biarritz Quiver</field>
+            <field name="active">True</field>
+            <field name="address_street">1 rue de la Plage</field>
+            <field name="address_zipcode">64200</field>
+            <field name="address_city">Biarritz</field>
+            <field name="places_max">6</field>
+        </record>
 
-          <record id="object3" model="rentsurf.rentsurf">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+        <!-- Options -->
+        <record id="demo_option_leash" model="rentsurf.option">
+            <field name="name">Leash</field>
+            <field name="active">True</field>
+            <field name="category">security</field>
+            <field name="description">Safety leash</field>
+        </record>
 
-          <record id="object4" model="rentsurf.rentsurf">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
+        <record id="demo_option_wax" model="rentsurf.option">
+            <field name="name">Wax pack</field>
+            <field name="active">True</field>
+            <field name="category">comfort</field>
+            <field name="description">Extra wax</field>
+        </record>
+
+        <!-- Categories -->
+        <record id="demo_cat_shortboard" model="rentsurf.category">
+            <field name="name">Shortboard</field>
+            <field name="active">True</field>
+            <field name="description">Short boards</field>
+        </record>
+
+        <record id="demo_cat_beginner" model="rentsurf.category">
+            <field name="name">Beginner</field>
+            <field name="active">True</field>
+            <field name="description">Easy boards</field>
+        </record>
+
+        <!-- Boards (liés) -->
+        <record id="demo_board_1" model="rentsurf.board">
+            <field name="active">True</field>
+            <field name="num_inv">SURF-2025-0001</field>
+            <field name="model">Torq 7.2</field>
+            <field name="notes">Demo board linked to quiver/options/categories</field>
+            <field name="length_cm">218</field>
+            <field name="condition">good</field>
+            <field name="date_purchased">2024-06-15</field>
+
+            <field name="quiver_id" ref="demo_quiver_anglet"/>
+            <field name="option_ids" eval="[(6, 0, [ref('demo_option_leash'), ref('demo_option_wax')])]"/>
+            <field name="category_ids" eval="[(6, 0, [ref('demo_cat_beginner')])]"/>
+        </record>
+
+        <!-- Board (non lié partiellement : pas d’options ni catégories) -->
+        <record id="demo_board_2" model="rentsurf.board">
+            <field name="active">True</field>
+            <field name="num_inv">SURF-2025-0002</field>
+            <field name="model">Minimal 8.0</field>
+            <field name="notes">Demo board with only quiver</field>
+            <field name="length_cm">244</field>
+            <field name="condition">used</field>
+            <field name="date_purchased">2023-05-10</field>
+
+            <field name="quiver_id" ref="demo_quiver_biarritz"/>
+        </record>
+
+        <!-- Exemple de contact (modèle étendu) -->
+        <record id="demo_partner_customer" model="res.partner">
+            <field name="name">Demo RentSurf Customer</field>
+            <field name="rentsurf_is_customer">True</field>
+            <field name="rentsurf_level">beginner</field>
+            <field name="rentsurf_preferred_quiver_id" ref="demo_quiver_anglet"/>
+        </record>
+
     </data>
 </odoo>

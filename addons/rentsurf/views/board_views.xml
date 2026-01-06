@@ -1,31 +1,64 @@
 <odoo>
+    <!-- FORM -->
     <record id="view_form_board" model="ir.ui.view">
         <field name="name">Board Form</field>
         <field name="model">rentsurf.board</field>
         <field name="arch" type="xml">
-            <form string="board">
+            <form string="Board">
                 <header>
-                    <button name="button_check_num_inv" string="Check Numero d'inventaire" type="object"/>
+                    <!-- Bouton: seulement Manager -->
+                    <button name="button_check_num_inv"
+                            string="Check Numero d'inventaire"
+                            type="object"
+                            class="btn-primary"
+                            groups="rentsurf.rentsurf_group_manager"/>
                 </header>
-                <group>
-                    <field name="model"/>
-                    <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
-                    <field name="active"/>
-                    <field name="date_purchased"/>
-                    <field name="num_inv"/>
-                    <field name="quiver_id"/>
-                    <!-- <field name="board_ids" widget="many2many">
-                        <list editable="bottom">
-                            <field name="model"/>
-                            <field name="num_inv" />
-                            <field name="date_purchased" />
-                            <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
-                        </list>
-                    </field> -->
-                </group>
+
+                <sheet>
+                    <group>
+                        <!-- Text -->
+                        <field name="model"/>
+                        <field name="num_inv"/>
+                        <field name="notes"/>
+
+                        <!-- Image -->
+                        <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
+
+                        <!-- Date -->
+                        <field name="date_purchased"/>
+
+                        <!-- Numeric -->
+                        <field name="length_cm"/>
+
+                        <!-- Select -->
+                        <field name="condition"/>
+
+                        <!-- Relations -->
+                        <field name="quiver_id"/>
+                        <field name="option_ids" widget="many2many_tags"/>
+                        <field name="category_ids" widget="many2many_tags"/>
+
+                        <!-- Related -->
+                        <field name="quiver_city" readonly="1"/>
+
+                        <!-- Computed -->
+                        <field name="age_days" readonly="1"/>
+
+                        <!-- Visible seulement si condition = damaged (méthode PDF: invisible='...') -->
+                        <field name="damage_report" invisible='condition != "damaged"'/>
+
+                        <!-- Champ visible seulement pour manager -->
+                        <field name="manager_internal_notes"
+                               groups="rentsurf.rentsurf_group_manager"/>
+
+                        <field name="active"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
+
+    <!-- LIST -->
     <record id="view_list_board" model="ir.ui.view">
         <field name="name">Board List</field>
         <field name="model">rentsurf.board</field>
@@ -34,10 +67,15 @@
                 <field name="model"/>
                 <field name="num_inv"/>
                 <field name="date_purchased"/>
+                <field name="condition"/>
+                <field name="age_days"/>
+                <field name="quiver_city"/>
                 <field name="active"/>
             </list>
         </field>
     </record>
+
+    <!-- SEARCH -->
     <record id="view_search_board" model="ir.ui.view">
         <field name="name">Board Filter</field>
         <field name="model">rentsurf.board</field>
@@ -45,8 +83,11 @@
             <search>
                 <field name="num_inv"/>
                 <field name="model"/>
+                <field name="condition"/>
+                <field name="quiver_id"/>
                 <filter name="filter_inactive" string="Inactive" domain="[('active','=',False)]"/>
                 <filter name="filter_active" string="Active" domain="[('active','=',True)]"/>
+                <filter name="filter_damaged" string="Damaged" domain="[('condition','=','damaged')]"/>
             </search>
         </field>
     </record>
