@@ -1,9 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_rentcars_vehicle_user,access_rentcars_vehicle_user,model_rentcars_vehicle,rentcars.rentcars_group_user,1,0,0,0
-access_rentcars_vehicle_manager,access_rentcars_vehicle_manager,model_rentcars_vehicle,rentcars.rentcars_group_manager,1,1,1,1
-access_garage_manager,GarageManager,model_rentcars_garage,rentcars_group_manager,1,1,1,1
-access_garage_user,GarageUser,model_rentcars_garage,rentcars_group_user,1,0,0,0
-access_option_manager,OptionManager,model_rentcars_option,rentcars_group_manager,1,1,1,1
-access_option_user,OptionUser,model_rentcars_option,rentcars_group_user,1,0,0,0
-access_category_manager,CategoryManager,model_rentcars_category,rentcars_group_manager,1,1,1,1
-access_category_user,CategoryUser,model_rentcars_category,rentcars_group_user,1,0,0,0
