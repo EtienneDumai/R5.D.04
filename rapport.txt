@@ -1,28 +1,268 @@
-Groupe de sécurité
+RAPPORT – MODULE ODOO RENTSURF
 
-    Il y a aux moins deux groupes de sécurité
-    Des droits d'accès différents aux modèles ont été accordés aux groupes de sécurité
+--------------------------------------------------
+1. Groupes de sécurité
+--------------------------------------------------
 
-Modèles
+1.1 Présence d’au moins deux groupes de sécurité
 
-    Il y a plusieurs modèles.
-    Il y a dans au moins un modèle un champ textuel, un champ numérique, un champ date un champ image, un champ select. et un champ calculé et un champ related.
-    Il y a au moins dans un modèle un méthode qui contrôle des données.
-    Il existe au moins une relation un à plusieurs et une relation plusieurs à plusieurs.
-    Il existe des données de démo au format xml. Certains enregistrements sont liés par les relations d'autres non.
-    Un des modèle étend un modèle d'odoo.
+Deux groupes de sécurité sont définis :
 
-Vues
+- RentSurf User : utilisateur standard
+- RentSurf Manager : responsable avec droits étendus
 
-    Il existe une vue liste personnalisée.
-    Il existe une vue formulaire personnalisée.
-    Il existe un champ recherche personnalisé.
-    Il existe une vue calendrier ou une vue kanban.
-    Une page web est disponible.
-    Dans une des vues on trouve au moins un exemplaire de tous les champs exigés dans les consignes sur les modèles.
-    Un bouton permet d'exécuter la méthode qui contrôle les données
-    L'héritage du modèle étendu est utilisé dans une vue (affichage d'un champ parent ou modification d'une des vues du modèle parent)
-    Un ou plusieurs champs ne sont visibles que pour un groupe d'utilisateur ou en fonction de la valeur d'un autre champ.
+Fichier concerné :
+- security/rentsurf_security.xml
 
-En plus de tous les fichiers nécessaires au bon fonctionnement de votre projet, vous devrez rendre aussi un rapport dans lequel vous indiquez, pour chaque critère, les pages (url) et les fichiers qui permettent de vérifier qu'un critère a été respecté.
+Vérification dans Odoo :
+- Activer le mode développeur
+- Menu : Paramètres → Utilisateurs et sociétés → Groupes
+- Rechercher les groupes “RentSurf”
+
+
+1.2 Droits d’accès différents selon les groupes
+
+Des droits d’accès distincts sont définis :
+
+- Les utilisateurs ont principalement des droits de lecture.
+- Les managers disposent des droits de création, modification et suppression.
+
+Fichier concerné :
+- security/ir.model.access.csv
+
+Vérification dans Odoo :
+- Mode développeur
+- Menu : Paramètres → Technique → Sécurité → Contrôles d’accès
+- Filtrer sur les modèles :
+  - rentsurf.board
+  - rentsurf.quiver
+  - rentsurf.option
+  - rentsurf.category
+
+
+--------------------------------------------------
+2. Modèles
+--------------------------------------------------
+
+2.1 Présence de plusieurs modèles
+
+Le module contient plusieurs modèles métier :
+
+- rentsurf.board (planches)
+- rentsurf.quiver (emplacements)
+- rentsurf.option (options)
+- rentsurf.category (catégories)
+
+Fichiers concernés :
+- models/rentsurf_board.py
+- models/rentsurf_quiver.py
+- models/rentsurf_option.py
+- models/rentsurf_category.py
+
+Vérification dans Odoo :
+- Mode développeur
+- Menu : Paramètres → Technique → Structure de la base → Modèles
+- Rechercher les modèles commençant par "rentsurf."
+
+
+2.2 Présence de tous les types de champs requis
+
+Dans le modèle rentsurf.board, on trouve :
+
+- Champ textuel : num_inv, model
+- Champ numérique : length_cm
+- Champ date : date_purchased
+- Champ image : thumbnail
+- Champ select : condition
+- Champ calculé : age_days
+- Champ related : quiver_city (lié à quiver_id.address_city)
+
+Fichier concerné :
+- models/rentsurf_board.py
+
+Vérification dans Odoo :
+- Menu : RentSurf → Boards
+- Ouvrir une planche
+- Vérifier l’affichage et le comportement des champs
+
+
+2.3 Méthode de contrôle des données
+
+Une méthode de validation du numéro d’inventaire est implémentée :
+
+- Format attendu : SURF-XXXX-XXXX
+- Une erreur est levée si le format est incorrect ou manquant
+
+Méthodes concernées :
+- _check_num_inv
+- button_check_num_inv
+
+Fichier concerné :
+- models/rentsurf_board.py
+
+Vérification dans Odoo :
+- Ouvrir une planche
+- Cliquer sur le bouton “Check Numero d’inventaire”
+- Tester avec une valeur incorrecte puis correcte
+
+
+2.4 Relations entre modèles
+
+Relation One2many :
+- Un quiver contient plusieurs boards
+  (rentsurf.quiver → board_ids)
+
+Relation Many2many :
+- Une board peut avoir plusieurs options
+- Une board peut appartenir à plusieurs catégories
+
+Fichiers concernés :
+- models/rentsurf_quiver.py
+- models/rentsurf_board.py
+
+Vérification dans Odoo :
+- Créer ou modifier un quiver et observer les boards associées
+- Ajouter plusieurs options ou catégories à une board
+
+
+2.5 Données de démonstration XML
+
+Des données de démonstration sont fournies :
+
+- quivers
+- options
+- catégories
+- boards liées et non liées (certaines sans options ou catégories)
+
+Fichier concerné :
+- demo/demo.xml
+
+Vérification dans Odoo :
+- Installer le module avec les données de démonstration
+- Vérifier la présence automatique d’enregistrements
+
+
+2.6 Extension d’un modèle Odoo existant
+
+Le modèle Odoo standard res.partner est étendu pour ajouter des informations spécifiques à RentSurf
+(client surf, niveau, quiver préféré).
+
+Fichier concerné :
+- models/rentsurf_partner.py
+
+Vérification dans Odoo :
+- Ouvrir un contact
+- Vérifier la présence des champs RentSurf supplémentaires
+
+
+--------------------------------------------------
+3. Vues
+--------------------------------------------------
+
+3.1 Vue liste personnalisée
+
+Une vue liste personnalisée est définie pour les boards.
+
+Fichier concerné :
+- views/board_views.xml
+
+Vérification dans Odoo :
+- Menu : RentSurf → Boards
+- Affichage en mode liste avec colonnes personnalisées
+
+
+3.2 Vue formulaire personnalisée
+
+Une vue formulaire complète est disponible pour les boards.
+
+Fichier concerné :
+- views/board_views.xml
+
+Vérification dans Odoo :
+- Ouvrir une board
+- Vérifier l’organisation des champs et la présence du bouton
+
+
+3.3 Champ de recherche personnalisé
+
+Une vue de recherche avec filtres personnalisés est définie.
+
+Fichier concerné :
+- views/board_views.xml
+
+Vérification dans Odoo :
+- Utiliser la barre de recherche
+- Tester les filtres (actif, endommagé, etc.)
+
+
+3.4 Vue Kanban
+
+Une vue kanban est disponible pour les boards.
+
+Fichier concerné :
+- views/board_kanban_views.xml
+
+Vérification dans Odoo :
+- Menu : RentSurf → Boards
+- Sélecteur de vue (icône en haut à droite) → Kanban
+
+
+3.5 Page web disponible
+
+Une page web publique liste les boards disponibles.
+
+Contrôleur :
+- controllers/board_controller.py
+
+Template :
+- views/board_list_template.xml
+
+URL :
+- http://localhost:8069/rentsurf/allboards
+
+
+3.6 Présence de tous les champs requis dans une vue
+
+La vue formulaire des boards affiche :
+
+- champs textuels
+- champs numériques
+- champ date
+- champ image
+- champ select
+- champ calculé
+- champ related
+
+Fichier concerné :
+- views/board_views.xml
+
+
+3.7 Bouton exécutant une méthode
+
+Le bouton “Check Numero d’inventaire” exécute une méthode Python de validation.
+
+Fichiers concernés :
+- models/rentsurf_board.py
+- views/board_views.xml
+
+
+3.8 Héritage de vue du modèle étendu
+
+La vue formulaire des contacts (res.partner) est étendue pour afficher les champs RentSurf.
+
+Fichier concerné :
+- views/res_partner_views.xml
+
+Vérification dans Odoo :
+- Ouvrir un contact
+- Onglet ou section RentSurf visible
+
+
+3.9 Champs visibles selon un groupe ou une valeur
+
+- Certains champs ou boutons sont visibles uniquement pour le groupe Manager
+- Certains champs sont affichés uniquement selon la valeur d’un autre champ (ex. condition = damaged)
+
+Fichier concerné :
+- views/board_views.xml
 
